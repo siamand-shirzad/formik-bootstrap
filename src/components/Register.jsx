@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import Formikcontrol from './formikComponents/FormikControl';
+import axios from 'axios';
 
 
 const initialValues ={
@@ -10,7 +11,14 @@ const initialValues ={
     c_password: "",
 }
 const onSubmit = (values)=>{
-    console.log(values);
+    // console.log(values);
+    axios.post("https://ecomadminapi.azhadev.ir/api/auth/register",values)
+    .then(res=>{
+        console.log(res);
+        localStorage.setItem("token",res.data.token);
+        console.log("saved:", localStorage.getItem("token"));
+
+})
     
 }
 const validationSchema = Yup.object({
@@ -36,7 +44,7 @@ const Register = () => {
                 >
                     {
                         formik=>{
-                            console.log(formik);
+                            // console.log(formik);
                             return(                                
                                 <div className="wrap-login100">
                                     <Form className="login100-form validate-form pos-relative d-flex flex-column align-items-center justify-content-center">
@@ -70,7 +78,7 @@ const Register = () => {
                                         />
                                         
                                         <div className="container-login100-form-btn">
-                                            <button className="login100-form-btn">
+                                            <button type='submit' className="login100-form-btn">
                                                 ثبت نام
                                             </button>
                                         </div>
