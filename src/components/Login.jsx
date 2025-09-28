@@ -1,6 +1,6 @@
 import { FastField, Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import Formikcontrol from './formikComponents/formikControl';
+import Formikcontrol from './formikComponents/FormikControl';
 
 
 const initialValues ={
@@ -39,11 +39,11 @@ const Login = () => {
 
                                         <Formikcontrol
                                         formik={formik}
-                                        control="input"
-                                        type="email"
-                                        name="email"
-                                        icon="fa fa-envelope"
-                                        label="ایمیل"
+										control="input"
+										type="text"
+										name="phone"
+										icon="fa fa-mobile"
+										label="شماره تلفن همراه"
                                         />
 
                                         <Formikcontrol
